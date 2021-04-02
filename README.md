@@ -41,7 +41,9 @@ The backend API requires
         <td>URL of whatever site is going to be in front of the API</td>
     </tr>
 </table>
+
 ## Running
+
 The backend and database have a docker-compose file to run them. You can find how to install docker and docker-compose on the [docker documentation](https://docs.docker.com/compose/install/)
 After installing docker-compose you should be able to just run the following command in the project directory
 
