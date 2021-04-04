@@ -4,7 +4,7 @@ A chat app that uses Node, MongoDB and React with Electron
 
 ## Setup
 The project requires multiple configurations in order to get working.
-The backend API requires 
+The backend API requires the config.env.example file to be changed to `config.env` and set these properties
 <table>
     <tr>
         <td>Name</td>
