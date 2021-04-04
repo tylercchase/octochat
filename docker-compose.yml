@@ -5,18 +5,17 @@ services:
       context: backend/
       dockerfile: Dockerfile
     ports: 
-      - "3000:3000"
+      - 3000:3000
     volumes:
       - ./backend:/usr/src/app
     links:
       - mongo
   mongo:
     image: mongo
-    # environment:
-    #   MONGO_INITDB_ROOT_USERNAME: root
-    #   MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - ./backend/storage/database:/data/db
+      - data1:/data/db
     ports:
       - 27017:27017
     restart: unless-stopped
+volumes:
+  data1:
