@@ -48,5 +48,8 @@ The backend and database have a docker-compose file to run them. You can find ho
 After installing docker-compose you should be able to just run the following command in the project directory
 
 ```bash
+cd backend
+npm install
+cd ..
 docker-compose up -d
 ```
