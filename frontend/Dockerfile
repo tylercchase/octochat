@@ -1,11 +1,11 @@
 FROM node:14-alpine
 
-WORKDIR /usr/src/app/backend
+WORKDIR /usr/src/app/chat-ui
 
 COPY package*.json ./
 
 RUN npm install
 
-EXPOSE 4000
+EXPOSE 3000
 
 CMD ["npm", "start"]

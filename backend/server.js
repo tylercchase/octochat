@@ -53,7 +53,7 @@ app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/channel', require('./routes/message'))
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4000
 
 const server = http.createServer(app)
 

@@ -3,11 +3,12 @@ services:
   backend:
     build: 
       context: backend/
-      dockerfile: Dockerfile
     ports: 
-      - 3000:3000
+      - 4000:4000
+    container_name: backend
     volumes:
-      - ./backend:/usr/src/app
+      - ./backend:/usr/src/app/backend
+      - /usr/src/app/backend/node_modules
     links:
       - mongo
   mongo:
@@ -17,5 +18,14 @@ services:
     ports:
       - 27017:27017
     restart: unless-stopped
+  chat-ui:
+    build:
+      context: ./frontend
+    ports:
+      - 3000:3000
+    container_name: chat-ui
+    volumes:
+       - ./frontend:/usr/src/app/chat-ui
+       - /usr/src/app/chat-ui/node_modules
 volumes:
   data1:
