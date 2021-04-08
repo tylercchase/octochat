@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 // Sessions
 app.use(cors({
-  origin: [process.env.BASEURL],
+  origin: process.env.BASEURL,
   credentials: true
 }))
 app.use(session({

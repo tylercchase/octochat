@@ -4,7 +4,7 @@ services:
     build: 
       context: backend/
     ports: 
-      - 4000:4000
+      - 3000:3000
     container_name: backend
     volumes:
       - ./backend:/usr/src/app/backend
@@ -22,7 +22,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - 3000:3000
+      - 4000:4000
     container_name: chat-ui
     volumes:
        - ./frontend:/usr/src/app/chat-ui

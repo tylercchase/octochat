@@ -3,7 +3,7 @@ const router = express.Router()
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 // @desc Login
 // @route GET /
-router.get('/', ensureGuest, (req, res) => {
+router.get('/', (req, res) => {
   res.send('Login')
 })
 

@@ -1,9 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
+  getMessages() {
+    // Use basic web request for now to test CORS and credentials
+    axios.get('http://localhost:3000/channel/1', {withCredentials: true}).then(res => {
+      console.log(res.data);
+    })
+  }
+  render () {
+    return <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -11,15 +19,19 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="http://localhost:3000/auth/google"
         >
-          Learn React
+          Login
         </a>
+        <button onClick={this.getMessages}>
+          Get Messages
+        </button>
+        <button>
+          Make Message
+        </button>
       </header>
     </div>
-  );
+  }
 }
 
 export default App;
