@@ -12,7 +12,7 @@ The backend API requires the config.env.example file to be changed to `config.en
         <td>Use</td>
     <tr> 
         <td>PORT</td>
-        <td>4000</td>
+        <td>3000</td>
         <td>Port to run the Express server on</td>
     </tr>
     <tr>
