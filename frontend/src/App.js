@@ -6,7 +6,7 @@ class App extends React.Component {
   ENDPOINT = "http://localhost:3000";
   constructor(props) {
     super(props);
-    this.state = {value: '', messages: []};
+    this.state = { value: '', messages: [] };
     this.messages = [];
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
@@ -35,7 +35,7 @@ class App extends React.Component {
       <div>
         <p>Messages</p>
         <ol>
-          {(this.state.messages || []).map((item,index) => (
+          {(this.state.messages || []).map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ol>
@@ -46,7 +46,7 @@ class App extends React.Component {
         </form>
       </div>
     );
-  } 
+  }
 }
 
 export default App;
