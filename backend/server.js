@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 // Sessions
 app.use(cors({
-  origin: '*',//process.env.BASEURL,
+  origin: process.env.BASEURL,
   credentials: true
 }))
 app.use(session({
@@ -67,6 +67,10 @@ const io = require('socket.io')(server, {
 
 io.on('connection', (socket) => {
   console.log('a user connected')
+  socket.on('message', data => {
+    console.log(data)
+    io.emit('message', data)
+  })
 })
 
 server.listen(PORT, () => {
