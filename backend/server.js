@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 // Sessions
 app.use(cors({
-  origin: process.env.BASEURL,
+  origin: '*',//process.env.BASEURL,
   credentials: true
 }))
 app.use(session({
@@ -58,21 +58,16 @@ const PORT = process.env.PORT || 4000
 
 const server = http.createServer(app)
 
-const io = require('socket.io')(server)
+const io = require('socket.io')(server, {
+  cors: {
+    origin: "http://localhost:4000",
+    credentials: true
+  }
+})
 
 io.on('connection', (socket) => {
   console.log('a user connected')
 })
-
-// const wss = new WebSocket.Server({ server })
-
-// wss.on('connection', (ws) => {
-//   ws.on('message', (message) => {
-//     console.log(`Recieved ${message}`)
-//     ws.send(`Hello you sent -> ${message}`)
-//   })
-//   ws.send('Hi there, I am a WebSocket server')
-// })
 
 server.listen(PORT, () => {
   console.log(`Running in ${process.env.NODE_ENV} mode at http://localhost:${PORT}`)
