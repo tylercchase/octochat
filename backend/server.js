@@ -67,6 +67,10 @@ const io = require('socket.io')(server, {
 
 io.on('connection', (socket) => {
   console.log('a user connected')
+  socket.on('message', data => {
+    console.log(data)
+    io.emit('message', data)
+  })
 })
 
 server.listen(PORT, () => {
