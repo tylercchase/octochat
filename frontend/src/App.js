@@ -12,19 +12,27 @@ class App extends React.Component {
 
   };
   componentDidMount() {
-    this.socket = socketIOClient(this.ENDPOINT);
+    this.socket = socketIOClient(this.ENDPOINT)
+    this.socket.emit('channeljoin', 1)
     this.socket.on("message", data => {
-      console.log(`Got a message ${data}`)
+      console.log(`Got a message ${data.content}`)
       this.setState(prevState => ({
         messages: [...prevState.messages, data]
       }))
     });
+    this.socket.on('channeljoin', data => {
+      this.setState({
+        messages: data.messages
+      })
+    })
   }
 
 
 
-  handleSubmit(event,message) {
-    this.socket.emit('message', message)
+  handleSubmit(event,_message) {
+    this.socket.emit('message', {
+      message: _message
+    })
     event.preventDefault();
   }
 

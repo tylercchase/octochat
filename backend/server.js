@@ -13,6 +13,8 @@ const http = require('http')
 
 const helmet = require('helmet')
 
+const Message = require('./models/Message');
+
 // Load config
 dotenv.config({ path: './config/config.env' })
 
@@ -65,11 +67,21 @@ const io = require('socket.io')(server, {
   }
 })
 
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
   console.log('a user connected')
   socket.on('message', data => {
     console.log(data)
-    io.emit('message', data)
+    Message.create({ content: data.message, channel: 1 }).then(_message => {
+      io.emit('message', _message)
+    })
+  })
+  socket.on('channeljoin', _channel => {
+    console.log('joining channel')
+    Message.find({channel: _channel }).then(_messages => {
+      io.emit('channeljoin', {
+        messages: _messages
+      })
+    })
   })
 })
 
