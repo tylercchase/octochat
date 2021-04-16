@@ -37,7 +37,7 @@ The backend API requires the config.env.example file to be changed to `config.en
     </tr>
     <tr>
         <td>BASE_URL</td>
-        <td>http://localhost:4200</td>
+        <td>http://localhost:4000</td>
         <td>URL of whatever site is going to be in front of the API</td>
     </tr>
 </table>
