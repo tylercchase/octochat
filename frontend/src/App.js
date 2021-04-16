@@ -1,15 +1,15 @@
 import React from "react";
 import socketIOClient from "socket.io-client";
-
+import Message from './Message';
+import InputArea from './InputArea';
 class App extends React.Component {
   socket;
   ENDPOINT = "http://localhost:3000";
   constructor(props) {
     super(props);
-    this.state = { value: '', messages: [] };
+    this.state = {  messages: [] };
     this.messages = [];
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+
   };
   componentDidMount() {
     this.socket = socketIOClient(this.ENDPOINT);
@@ -21,12 +21,10 @@ class App extends React.Component {
     });
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
 
-  handleSubmit(event) {
-    this.socket.emit('message', this.state.value)
+
+  handleSubmit(event,message) {
+    this.socket.emit('message', message)
     event.preventDefault();
   }
 
@@ -36,14 +34,11 @@ class App extends React.Component {
         <p>Messages</p>
         <ol>
           {(this.state.messages || []).map((item, index) => (
-            <li key={index}>{item}</li>
+            <Message key={index} message={item}></Message>
           ))}
         </ol>
-        <form onSubmit={this.handleSubmit}>
-          <label>Message: </label>
-          <input type="text" value={this.state.value} onChange={this.handleChange}></input>
-          <input type="submit" value="Send" />
-        </form>
+        <InputArea handleSubmit={this.handleSubmit.bind(this)}></InputArea>
+
       </div>
     );
   }
