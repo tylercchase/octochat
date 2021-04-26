@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <nav>
+          {false && <nav >
             <ul>
               <li>
                 <Link to="/">Home</Link>
@@ -24,7 +24,7 @@ class App extends React.Component {
                 <Link to="/users">Users</Link>
               </li>
             </ul>
-          </nav>
+          </nav>}
 
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -32,7 +32,7 @@ class App extends React.Component {
             <Route path="/channel/:id">
               <Channel />
             </Route>
-            <Route path="/login">
+            <Route path="/">
               <Login />
             </Route>
           </Switch>

@@ -2,6 +2,7 @@ import React from "react";
 import socketIOClient from "socket.io-client";
 import Message from './Message';
 import InputArea from './InputArea';
+import './Channel.css';
 class Channel extends React.Component {
   socket;
   ENDPOINT = "http://localhost:3000";
@@ -30,23 +31,28 @@ class Channel extends React.Component {
 
 
   handleSubmit(event,_message) {
-    this.socket.emit('message', {
-      message: _message
-    })
+    if(_message.length > 0){
+      this.socket.emit('message', {
+        message: _message
+      })
+    }
     event.preventDefault();
   }
 
   render() {
     return (
       <div>
-        <p>Messages</p>
-        <ol>
-          {(this.state.messages || []).map((item, index) => (
-            <Message key={index} message={item}></Message>
-          ))}
-        </ol>
+        <div class="header">
+          Octochat
+        </div>
+        <div class="messages">
+          <div>
+            {(this.state.messages || []).map((item, index) => (
+              <Message key={index} message={item}></Message>
+            ))}
+          </div>
+        </div>
         <InputArea handleSubmit={this.handleSubmit.bind(this)}></InputArea>
-
       </div>
     );
   }

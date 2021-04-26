@@ -1,0 +1,42 @@
+.message {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+
+    width: 95vw;
+}
+.profile-pic {
+
+}
+.profile-img {
+    width: 45px;
+    height: 45px;
+    border: 0.5px solid #000000;
+    border-radius: 45px;
+    margin: 4px;
+}
+.username {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    color: black;
+}
+.user-details {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.time {
+    margin-left: 5px;
+    font-size: 9px;
+    color: #292929;
+}
+.content {
+    font-family: 'Roboto';
+    color: #4D4E3F;
+    font-size: 13px;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+}
