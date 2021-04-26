@@ -34,7 +34,7 @@ class Channel extends React.Component {
 
   handleSubmit(event,_message) {
     if(_message.length > 255){
-      toast.error('Message too long.', {
+      toast.error('🐙 Message too long.', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
