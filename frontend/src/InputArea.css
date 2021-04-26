@@ -1,0 +1,28 @@
+#message-input {
+    display: flex;
+    width: 100vw;
+    background: #8FD694;
+    height: 5vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#send-button {
+    height: 50%;
+    width: 5%;
+}
+#send-area {
+    width: 98%;
+    height: 2.5vh;
+    border: none;
+    border-radius: 9px;
+    outline: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: #6AC870;
+    font-size: 12px;
+    color: black;
+}
+#send-area::placeholder {
+    color: #3D3D3D;
+}

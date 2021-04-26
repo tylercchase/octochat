@@ -7,9 +7,24 @@ import {
 } from "react-router-dom";
 import Channel from "./Channel";
 import Login from "./Login";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class App extends React.Component {
   render() {
     return (
+      <div>
+        <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      />
       <Router>
         <div>
           {false && <nav >
@@ -38,6 +53,8 @@ class App extends React.Component {
           </Switch>
         </div>
       </Router>
+      </div>
+      
     );
   }
 }

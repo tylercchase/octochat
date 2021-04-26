@@ -1,5 +1,5 @@
 import React from "react";
-
+import './InputArea.css';
 class InputArea extends React.Component {
     handleChange(event) {
         this.setState({ value: event.target.value })
@@ -13,9 +13,8 @@ class InputArea extends React.Component {
 
     render() {
         return (
-            <form onSubmit={(event) => {this.props.handleSubmit(event, this.state.value); this.setState({value: ''})}} class>
-                <input type="text" value={this.state.value} onChange={this.handleChange} ></input>
-                <input type="submit" value="Send" />
+            <form onSubmit={(event) => {this.props.handleSubmit(event, this.state.value); this.setState({value: ''})}} id="message-input">
+                <input type="text" value={this.state.value} onChange={this.handleChange} id="send-area" placeholder="Send a message"></input>
             </form>
         )
     }

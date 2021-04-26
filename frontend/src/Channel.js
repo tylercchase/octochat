@@ -3,6 +3,8 @@ import socketIOClient from "socket.io-client";
 import Message from './Message';
 import InputArea from './InputArea';
 import './Channel.css';
+import { ToastContainer, toast } from 'react-toastify'
+
 class Channel extends React.Component {
   socket;
   ENDPOINT = "http://localhost:3000";
@@ -31,7 +33,18 @@ class Channel extends React.Component {
 
 
   handleSubmit(event,_message) {
-    if(_message.length > 0){
+    if(_message.length > 255){
+      toast.error('Message too long.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    }
+    if(_message.length > 0 && _message.length < 255){
       this.socket.emit('message', {
         message: _message
       })
