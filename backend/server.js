@@ -71,7 +71,7 @@ io.on('connection', async (socket) => {
   console.log('a user connected')
   socket.on('message', data => {
     console.log(data)
-    Message.create({ content: data.message, channel: 1 }).then(_message => {
+    Message.create({ content: data.message, channel: 1, user: data.user }).then(_message => {
       io.emit('message', _message)
     })
   })

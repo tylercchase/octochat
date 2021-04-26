@@ -6,15 +6,19 @@
     place-items: center;
 }
 
-.container { 
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
 }
 #logo {
     font-size: 48px;
     color: black;
     font-family: 'Barlow', sans-serif;
+}
+#name-input {
+    color: white;
+    border: none;
+    outline: none;
 }

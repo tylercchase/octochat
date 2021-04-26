@@ -9,7 +9,7 @@ class Message extends React.Component {
                 </div>
                 <div class="message-content">
                     <div class="user-details">
-                        <div class="username">Test user </div>
+                        <div class="username">{this.props.message.user}</div>
                         <div class="time">{this.props.message.sent.substring(0,10)}</div>
                     </div>
                     <div class="content">{this.props.message.content}</div>

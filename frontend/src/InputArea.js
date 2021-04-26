@@ -14,7 +14,7 @@ class InputArea extends React.Component {
     render() {
         return (
             <form onSubmit={(event) => {this.props.handleSubmit(event, this.state.value); this.setState({value: ''})}} id="message-input">
-                <input type="text" value={this.state.value} onChange={this.handleChange} id="send-area" placeholder="Send a message"></input>
+                <input type="text" value={this.state.value} onChange={this.handleChange} id="send-area" placeholder="Send a message" autocomplete="off"></input>
             </form>
         )
     }

@@ -46,7 +46,8 @@ class Channel extends React.Component {
     }
     if(_message.length > 0 && _message.length < 255){
       this.socket.emit('message', {
-        message: _message
+        message: _message,
+        user: localStorage.getItem('name')
       })
     }
     event.preventDefault();
