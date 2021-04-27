@@ -1,8 +1,6 @@
 import './Login.css';
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
-import logo from './octochat.png'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 class Login extends React.Component {
   handleChange(event) {
@@ -22,6 +20,7 @@ class Login extends React.Component {
     }
     if(_name.length > 0 && _name.length < 50){
       localStorage.setItem('name', _name)
+      window.location.replace('http://localhost:4000/channel/general')
     }
     event.preventDefault();
   }
@@ -41,7 +40,6 @@ class Login extends React.Component {
             <form onSubmit={(event) => {this.handleSubmit(event, this.state.value); this.setState({value: ''})}} id="message-input">
                 <input type="text" value={this.state.value} onChange={this.handleChange} id="input-name" placeholder="Enter a name"></input>
             </form>
-            <Link to={`/channel/1`}>Link to a channel page</Link>
           </div>
         </div>
     )

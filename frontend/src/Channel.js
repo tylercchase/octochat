@@ -3,16 +3,20 @@ import socketIOClient from "socket.io-client";
 import Message from './Message';
 import InputArea from './InputArea';
 import './Channel.css';
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
+import { Link, useParams } from "react-router-dom";
 
 class Channel extends React.Component {
+
   socket;
   ENDPOINT = "http://localhost:3000";
+  scrollToBottom() {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  };
   constructor(props) {
     super(props);
     this.state = {  messages: [] };
     this.messages = [];
-
   };
   componentDidMount() {
     this.socket = socketIOClient(this.ENDPOINT)
@@ -22,11 +26,13 @@ class Channel extends React.Component {
       this.setState(prevState => ({
         messages: [...prevState.messages, data]
       }))
+      this.scrollToBottom()
     });
     this.socket.on('channeljoin', data => {
       this.setState({
         messages: data.messages
       })
+      this.scrollToBottom()
     })
   }
 
@@ -57,14 +63,22 @@ class Channel extends React.Component {
     return (
       <div>
         <div class="header">
-          Octochat
+          <Link to={`/`} class="header-text">Octochat </Link>
         </div>
-        <div class="messages">
-          <div>
-            {(this.state.messages || []).map((item, index) => (
-              <Message key={index} message={item}></Message>
-            ))}
+        <div class="channel-container">
+          <div id="channels">
+            <Link to={'/channel/general'} class="channel-links">General Chat</Link>
+            <Link to={'/channel/testing'} class="channel-links">Testing</Link>
           </div>
+          <div class="messages">
+              {(this.state.messages || []).map((item, index) => (
+                <Message key={index} message={item}></Message>
+              ))}
+              <div style={{ float:"left", clear: "both" }}
+              ref={(el) => { this.messagesEnd = el; }}>
+             </div>
+          </div>
+          
         </div>
         <InputArea handleSubmit={this.handleSubmit.bind(this)}></InputArea>
       </div>

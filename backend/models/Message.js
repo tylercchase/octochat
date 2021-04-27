@@ -10,7 +10,7 @@ const MessageSchema = new mongoose.Schema({
     default: Date.now
   },
   channel: {
-    type: Number,
+    type: String,
     required: true
   },
   user: {

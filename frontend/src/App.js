@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Channel from "./Channel";
 import Login from "./Login";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 class App extends React.Component {

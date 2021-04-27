@@ -2,7 +2,7 @@
     height: 65px;
     display: flex;
     flex-direction: row;
-    width: 95vw;
+    width: 100%;
     align-items: center;
 }
 .profile-img {
