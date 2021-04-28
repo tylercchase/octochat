@@ -74,6 +74,11 @@ class Channel extends React.Component {
           <div id="channels" onClick={async () => { setTimeout(()=>{this.setState({channel: this.props.match.params.id }); this.socket.emit('channeljoin',this.state.channel)},10)}}>
             <Link to={'/channel/general'} class="channel-links" >General Chat</Link>
             <Link to={'/channel/testing'} class="channel-links">Testing</Link>
+            <Link to={'/channel/5'} class="channel-links">5</Link>
+            <Link to={'/channel/CsGetDegrees'} class="channel-links">C's Get Degrees</Link>
+            <Link to={'/channel/Date Chat🍆💦'} class="channel-links">Date Chat🍆💦</Link>
+            <Link to={'/channel/Pancake Recipes'} class="channel-links">Pancake Recipes</Link>
+            <Link to={'/channel/Conspiracy Theories'} class="channel-links">Conspiracy Theories</Link>
           </div>
           <div class="messages">
               {(this.state.messages || []).map((item, index) => (
