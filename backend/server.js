@@ -2,20 +2,16 @@ const dotenv = require('dotenv')
 const connectDB = require('./config/db')
 const http = require('http')
 
-
-const Message = require('./models/Message');
+const Message = require('./models/Message')
 
 // Load config
 dotenv.config({ path: './config/config.env' })
 
 connectDB()
 
-
-
 const PORT = process.env.PORT || 4000
 
 const server = http.createServer()
-
 
 const io = require('socket.io')(server, {
   cors: {
@@ -33,10 +29,10 @@ io.on('connection', async (socket) => {
   })
   socket.on('channeljoin', _channel => {
     console.log(`Joining channel: ${_channel}`)
-    Message.find({channel: _channel }).then(_messages => {
+    Message.find({ channel: _channel }).then(_messages => {
       socket.emit('channeljoin', {
         messages: _messages,
-        channel: _channel,
+        channel: _channel
       })
     })
   })
