@@ -4,29 +4,33 @@ import Message from './Message';
 import InputArea from './InputArea';
 import './Channel.css';
 import { toast } from 'react-toastify'
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Channel extends React.Component {
 
   socket;
   ENDPOINT = "http://localhost:3000";
   scrollToBottom() {
-    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    this.messagesEnd?.scrollIntoView({ behavior: "smooth" });
   };
   constructor(props) {
     super(props);
-    this.state = {  messages: [] };
+    this.state = {  messages: [], channel: this.props.match.params.id };
     this.messages = [];
   };
+
   componentDidMount() {
     this.socket = socketIOClient(this.ENDPOINT)
-    this.socket.emit('channeljoin', 1)
+    this.socket.emit('channeljoin', this.state.channel)
     this.socket.on("message", data => {
-      console.log(`Got a message ${data.content}`)
-      this.setState(prevState => ({
-        messages: [...prevState.messages, data]
-      }))
-      this.scrollToBottom()
+      if(data.channel === this.state.channel) {
+        console.log(`Got a message ${data.content}`)
+        this.setState(prevState => ({
+          messages: [...prevState.messages, data]
+        }))
+        this.scrollToBottom()
+      }
+
     });
     this.socket.on('channeljoin', data => {
       this.setState({
@@ -53,7 +57,8 @@ class Channel extends React.Component {
     if(_message.length > 0 && _message.length < 255){
       this.socket.emit('message', {
         message: _message,
-        user: localStorage.getItem('name')
+        user: localStorage.getItem('name'),
+        channel: this.state.channel
       })
     }
     event.preventDefault();
@@ -66,8 +71,8 @@ class Channel extends React.Component {
           <Link to={`/`} class="header-text">Octochat </Link>
         </div>
         <div class="channel-container">
-          <div id="channels">
-            <Link to={'/channel/general'} class="channel-links">General Chat</Link>
+          <div id="channels" onClick={async () => { setTimeout(()=>{this.setState({channel: this.props.match.params.id }); this.socket.emit('channeljoin',this.state.channel)},10)}}>
+            <Link to={'/channel/general'} class="channel-links" >General Chat</Link>
             <Link to={'/channel/testing'} class="channel-links">Testing</Link>
           </div>
           <div class="messages">

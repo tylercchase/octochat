@@ -44,9 +44,7 @@ class App extends React.Component {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/channel/:id">
-              <Channel />
-            </Route>
+            <Route path="/channel/:id" component={Channel} />
             <Route path="/">
               <Login />
             </Route>
