@@ -76,9 +76,10 @@ class Channel extends React.Component {
             <NavLink to={'/channel/testing'} className="channel-links"  activeClassName="selected">Testing</NavLink>
             <NavLink to={'/channel/5'} className="channel-links"  activeClassName="selected">5</NavLink>
             <NavLink to={'/channel/CsGetDegrees'} className="channel-links"  activeClassName="selected">C's Get Degrees</NavLink>
-            <NavLink to={'/channel/Date Chat♥🍑🍆💦'} className="channel-links"  activeClassName="selected">Date Chat♥🍑🍆💦</NavLink>
+            <NavLink to={'/channel/Date Chat♥🍑�🍆💦'} className="channel-links"  activeClassName="selected">Date Chat♥🍑🍆💦</NavLink>
             <NavLink to={'/channel/Pancake Recipes'} className="channel-links"  activeClassName="selected">Pancake Recipes</NavLink>
             <NavLink to={'/channel/Conspiracy Theories'} className="channel-links"  activeClassName="selected">Conspiracy Theories</NavLink>
+            <NavLink to={'/channel/Octopi club'} className="channel-links"  activeClassName="selected">Octopi club</NavLink>
           </div>
           <div className="right-side">
             <div className="messages">
