@@ -20,7 +20,7 @@ class Login extends React.Component {
     }
     if(_name.length > 0 && _name.length < 50){
       localStorage.setItem('name', _name)
-      window.location.replace('http://localhost:4000/channel/general')
+      window.location.replace('http://chat.tylerchase.sexy:4000/channel/general')
     }
     event.preventDefault();
   }

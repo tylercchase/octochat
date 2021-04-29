@@ -9,13 +9,13 @@ dotenv.config({ path: './config/config.env' })
 
 connectDB()
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 3000
 
 const server = http.createServer()
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'http://localhost:4000',
+    origin: 'http://chat.tylerchase.sexy',
     credentials: true
   }
 })

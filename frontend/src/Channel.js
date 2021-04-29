@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 class Channel extends React.Component {
 
   socket;
-  ENDPOINT = "http://localhost:3000";
+  ENDPOINT = "http://chat.tylerchase.sexy:3000";
   scrollToBottom() {
     this.messagesEnd?.scrollIntoView({ behavior: "smooth" });
   };
