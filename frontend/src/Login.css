@@ -25,3 +25,16 @@
     border: none;
     outline: none;
 }
+.particles {
+    height: 100vh;
+    width: 100vw;
+    background: #8FD694;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.particles div {
+    width: 100%;
+}
