@@ -1,9 +1,9 @@
 .login-background {
-    color: red;
     width: 100vw;
     height: 100vh;
     display: grid;
     place-items: center;
+    background: linear-gradient(180deg, rgba(82, 82, 82, 0.58) 0%, rgba(143, 212, 148, 0) 100%);
 }
 
 .container {
@@ -12,10 +12,13 @@
     align-items: center;
     text-align: center;
 }
-#logo {
-    font-size: 48px;
+#tagline {
+    font-size: 24px;
     color: black;
     font-family: 'Barlow', sans-serif;
+}
+.login-logo {
+    width: 100vw;
 }
 #name-input {
     color: white;

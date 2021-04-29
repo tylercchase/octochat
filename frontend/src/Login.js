@@ -1,7 +1,7 @@
 import './Login.css';
 import React from "react";
 import { toast } from 'react-toastify'
-
+import logo from './thingy.svg'
 class Login extends React.Component {
   handleChange(event) {
     this.setState({ value: event.target.value })
@@ -36,8 +36,9 @@ class Login extends React.Component {
         <div class="login-background">
 
           <div class="container">
-            <div id="logo"> Octochat </div>
-            <form onSubmit={(event) => {this.handleSubmit(event, this.state.value); this.setState({value: ''})}} id="message-input">
+            <img src={logo} alt="Logo" className="login-logo"/>
+            <div id="tagline"> A chat platform for Octopi by Octopi</div>
+            <form onSubmit={(event) => {this.handleSubmit(event, this.state.value); this.setState({value: ''})}} >
                 <input type="text" value={this.state.value} onChange={this.handleChange} id="input-name" placeholder="Enter a name"></input>
             </form>
           </div>
